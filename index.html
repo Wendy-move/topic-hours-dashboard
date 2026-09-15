@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f7f5" />
+    <title>课题工时</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script defer src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+    <script defer src="./app.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="课题工时首页">
+          <span class="brand-mark" aria-hidden="true"><i data-lucide="calendar-range"></i></span>
+          <span>
+            <strong>课题工时</strong>
+            <small>飞书日历周报</small>
+          </span>
+        </a>
+
+        <div class="sync-cluster">
+          <span class="source-state" id="sourceState">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span id="sourceLabel">正在读取</span>
+          </span>
+          <button class="icon-button" id="refreshButton" type="button" aria-label="刷新数据" title="刷新数据">
+            <i data-lucide="refresh-cw"></i>
+          </button>
+        </div>
+      </header>
+
+      <section class="date-band" aria-label="周范围">
+        <div class="week-switcher">
+          <button class="icon-button quiet" id="previousWeek" type="button" aria-label="上一周" title="上一周">
+            <i data-lucide="chevron-left"></i>
+          </button>
+          <button class="week-label" id="weekPickerButton" type="button" aria-haspopup="dialog">
+            <i data-lucide="calendar-days"></i>
+            <span>
+              <small id="weekCaption">本周</small>
+              <strong id="weekRange">9月14日 - 9月18日</strong>
+            </span>
+          </button>
+          <button class="icon-button quiet" id="nextWeek" type="button" aria-label="下一周" title="下一周">
+            <i data-lucide="chevron-right"></i>
+          </button>
+          <button class="text-button" id="currentWeek" type="button">
+            <i data-lucide="locate-fixed"></i>
+            本周
+          </button>
+        </div>
+
+        <div class="last-sync" id="lastSync">
+          <i data-lucide="clock-3"></i>
+          <span>等待同步</span>
+        </div>
+      </section>
+
+      <main>
+        <section class="overview" aria-label="本周概览">
+          <div class="metric primary-metric">
+            <span class="metric-label">课题总投入</span>
+            <strong id="totalHours">--</strong>
+            <small id="totalMinutes">--</small>
+          </div>
+          <div class="metric">
+            <span class="metric-label">课题</span>
+            <strong id="topicCount">--</strong>
+            <small>合并同类项</small>
+          </div>
+          <div class="metric">
+            <span class="metric-label">日程</span>
+            <strong id="eventCount">--</strong>
+            <small>周一至周五</small>
+          </div>
+          <div class="metric focus-metric">
+            <span class="metric-label">投入最多</span>
+            <strong id="topTopic">--</strong>
+            <small id="topTopicTime">--</small>
+          </div>
+          <div class="distribution" id="distribution" aria-label="课题耗时占比"></div>
+        </section>
+
+        <section class="workspace" aria-labelledby="workspaceTitle">
+          <div class="workspace-header">
+            <div>
+              <p class="eyebrow" id="workspaceEyebrow">红色日历</p>
+              <h1 id="workspaceTitle">课题投入明细</h1>
+            </div>
+            <div class="workspace-actions">
+              <label class="search-box" for="searchInput">
+                <i data-lucide="search"></i>
+                <input id="searchInput" type="search" placeholder="搜索课题或议题" autocomplete="off" />
+                <button class="clear-search" id="clearSearch" type="button" aria-label="清除搜索" title="清除搜索" hidden>
+                  <i data-lucide="x"></i>
+                </button>
+              </label>
+              <div class="segmented" role="tablist" aria-label="查看方式">
+                <button class="segment active" id="topicTab" type="button" role="tab" aria-selected="true" aria-controls="topicPanel">
+                  <i data-lucide="layers-3"></i>
+                  按课题
+                </button>
+                <button class="segment" id="dayTab" type="button" role="tab" aria-selected="false" aria-controls="dayPanel">
+                  <i data-lucide="list"></i>
+                  按日期
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="notice error-notice" id="errorNotice" role="alert" hidden>
+            <i data-lucide="circle-alert"></i>
+            <span id="errorText"></span>
+          </div>
+
+          <div class="loading-state" id="loadingState" aria-live="polite">
+            <span class="loading-spinner" aria-hidden="true"></span>
+            <span>正在整理日历</span>
+          </div>
+
+          <section class="view-panel" id="topicPanel" role="tabpanel" aria-labelledby="topicTab" hidden>
+            <div class="table-wrap">
+              <table class="topic-table">
+                <thead>
+                  <tr>
+                    <th scope="col">课题</th>
+                    <th scope="col">具体议题</th>
+                    <th scope="col">耗时</th>
+                    <th scope="col">课题总耗时</th>
+                  </tr>
+                </thead>
+                <tbody id="topicTableBody"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="view-panel" id="dayPanel" role="tabpanel" aria-labelledby="dayTab" hidden>
+            <div class="day-list" id="dayList"></div>
+          </section>
+
+          <div class="empty-state" id="emptyState" hidden>
+            <i data-lucide="calendar-x-2"></i>
+            <strong>没有匹配的日程</strong>
+            <span>当前周或筛选条件下暂无数据</span>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span><span class="calendar-swatch" aria-hidden="true"></span><span id="calendarName">红色日历</span></span>
+        <span id="footerSummary">周一至周五</span>
+      </footer>
+    </div>
+
+    <dialog class="week-dialog" id="weekDialog">
+      <form method="dialog">
+        <div class="dialog-header">
+          <div>
+            <small>选择周</small>
+            <strong>从任意日期定位</strong>
+          </div>
+          <button class="icon-button quiet" value="cancel" aria-label="关闭" title="关闭">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <label class="date-field" for="weekDateInput">
+          日期
+          <input id="weekDateInput" type="date" />
+        </label>
+        <div class="dialog-actions">
+          <button class="text-button" value="cancel">取消</button>
+          <button class="primary-button" id="applyWeek" value="default">查看这一周</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

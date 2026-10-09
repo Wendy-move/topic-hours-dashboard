@@ -1,6 +1,6 @@
 {
   "source": "scheduled",
-  "fetchedAt": "2026-10-09T13:44:46+08:00",
+  "fetchedAt": "2026-10-09T18:46:17+08:00",
   "calendar": {
     "id": "feishu.cn_PMFM9NPl98P0etnKzgWwPd@group.calendar.feishu.cn",
     "name": "红色日历",
@@ -49,6 +49,12 @@
       "summary": "部门管理-林琛沟通",
       "start": "2026-10-09T15:00:00+08:00",
       "end": "2026-10-09T15:30:00+08:00"
+    },
+    {
+      "id": "988b1087-e0ed-41a9-a99c-a44a03f7f832_0",
+      "summary": "部门管理-研发部管理命题作业",
+      "start": "2026-10-09T16:00:00+08:00",
+      "end": "2026-10-09T16:30:00+08:00"
     },
     {
       "id": "823aee23-5ae3-498d-9cdd-a735a35d5830_0",

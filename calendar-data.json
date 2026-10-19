@@ -1,6 +1,6 @@
 {
   "source": "scheduled",
-  "fetchedAt": "2026-10-19T20:19:32+08:00",
+  "fetchedAt": "2026-10-20T01:22:18+08:00",
   "calendar": {
     "id": "feishu.cn_PMFM9NPl98P0etnKzgWwPd@group.calendar.feishu.cn",
     "name": "红色日历",
@@ -64,7 +64,7 @@
     },
     {
       "id": "1ab9c2ec-da25-456a-8cec-388e512710d4_0",
-      "summary": "面谈-研发部张逸",
+      "summary": "面谈-研发部饶官军",
       "start": "2026-10-20T15:30:00+08:00",
       "end": "2026-10-20T16:00:00+08:00"
     },

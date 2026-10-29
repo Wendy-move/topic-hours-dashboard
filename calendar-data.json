@@ -1,6 +1,6 @@
 {
   "source": "scheduled",
-  "fetchedAt": "2026-10-29T07:03:55+08:00",
+  "fetchedAt": "2026-10-29T12:05:33+08:00",
   "calendar": {
     "id": "feishu.cn_PMFM9NPl98P0etnKzgWwPd@group.calendar.feishu.cn",
     "name": "红色日历",
@@ -97,6 +97,12 @@
       "summary": "AI游戏-重启项目上线前的 Go/No-Go 决策会",
       "start": "2026-10-30T14:00:00+08:00",
       "end": "2026-10-30T14:30:00+08:00"
+    },
+    {
+      "id": "ad6dde3e-4fec-48c8-86e4-726e6a693e6b_0",
+      "summary": "AI游戏-上线准备",
+      "start": "2026-10-30T15:30:00+08:00",
+      "end": "2026-10-30T16:00:00+08:00"
     }
   ]
 }

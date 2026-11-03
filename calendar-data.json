@@ -1,6 +1,6 @@
 {
   "source": "scheduled",
-  "fetchedAt": "2026-11-03T17:53:04+08:00",
+  "fetchedAt": "2026-11-03T22:54:32+08:00",
   "calendar": {
     "id": "feishu.cn_PMFM9NPl98P0etnKzgWwPd@group.calendar.feishu.cn",
     "name": "红色日历",
@@ -61,6 +61,12 @@
       "summary": "战斗训练-林旭沟通",
       "start": "2026-11-03T17:00:00+08:00",
       "end": "2026-11-03T18:00:00+08:00"
+    },
+    {
+      "id": "382f0e5c-ce81-4cab-8be5-d2d874a236c4_0",
+      "summary": "部门管理-年报需求汇报会",
+      "start": "2026-11-04T14:00:00+08:00",
+      "end": "2026-11-04T14:30:00+08:00"
     },
     {
       "id": "a24d038c-79af-4e8f-b032-4402d1340a87_0",

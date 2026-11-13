@@ -469,6 +469,14 @@
     try {
       const payload = await requestPayload();
       const normalized = (payload.events || []).map(normalizeEvent).filter(Boolean);
+      if (
+        !state.initialized &&
+        payload.source === "scheduled" &&
+        normalized.length > 0 &&
+        eventsForWeek(normalized, state.weekStart).length === 0
+      ) {
+        state.weekStart = getMonday(normalized[0].start);
+      }
       state.payload = payload;
       state.parsedEvents = eventsForWeek(normalized, state.weekStart)
         .map((event) => parseTitle(event, payload))

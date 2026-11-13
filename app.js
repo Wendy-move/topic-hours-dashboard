@@ -138,6 +138,7 @@
     return {
       id: String(event.id || event.event_id || `${event.summary}-${start.toISOString()}`),
       summary: String(event.summary || "未命名日程").trim(),
+      description: String(event.description || "").trim(),
       start,
       end,
       minutes: Math.round((end.getTime() - start.getTime()) / 60000)
@@ -197,7 +198,8 @@
           minutes: 0,
           count: 0,
           firstStart: event.start,
-          dates: []
+          dates: [],
+          descriptions: new Set()
         });
       }
       const issue = topic.issues.get(event.issue);
@@ -205,6 +207,7 @@
       issue.count += 1;
       if (event.start < issue.firstStart) issue.firstStart = event.start;
       issue.dates.push(event.start);
+      if (event.description) issue.descriptions.add(event.description);
     });
 
     return Array.from(topicMap.values())
@@ -307,7 +310,12 @@
       const issueLines = createElement("div", "issue-lines");
       group.issues.forEach((issue) => {
         const line = createElement("div", "issue-line");
-        line.append(createElement("span", "issue-name", issue.name));
+        const issueCopy = createElement("div", "issue-copy");
+        issueCopy.append(createElement("span", "issue-name", issue.name));
+        issue.descriptions.forEach((description) => {
+          issueCopy.append(createElement("small", "core-issue", "核心议题：" + description));
+        });
+        line.append(issueCopy);
         if (issue.count > 1) line.append(createElement("span", "occurrence", `${issue.count}次`));
         issueLines.append(line);
       });
@@ -353,7 +361,11 @@
         const main = createElement("div", "event-main");
         main.style.setProperty("--topic-color", topicColor(topicIndex));
         const copy = createElement("div", "event-copy");
-        copy.append(createElement("strong", "", event.issue), createElement("small", "", event.topic));
+        copy.append(createElement("strong", "", event.issue));
+        if (event.description) {
+          copy.append(createElement("small", "core-issue", "核心议题：" + event.description));
+        }
+        copy.append(createElement("small", "", event.topic));
         main.append(copy);
         item.append(main, createElement("span", "event-duration", formatDuration(event.minutes)));
         list.append(item);

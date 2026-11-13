@@ -705,9 +705,23 @@ main {
   gap: 9px;
 }
 
+.issue-copy {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+
 .issue-name {
   min-width: 0;
   overflow-wrap: anywhere;
+}
+
+.core-issue {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+  white-space: normal;
 }
 
 .occurrence {
@@ -830,6 +844,12 @@ main {
   margin-top: 3px;
   color: var(--muted);
   font-size: 11px;
+}
+
+.event-copy .core-issue {
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
 }
 
 .event-duration {

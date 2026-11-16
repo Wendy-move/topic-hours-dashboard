@@ -1,6 +1,6 @@
 {
   "source": "scheduled",
-  "fetchedAt": "2026-11-16T21:01:15.141+08:00",
+  "fetchedAt": "2026-11-17T02:02:53.630+08:00",
   "calendar": {
     "id": "feishu.cn_PMFM9NPl98P0etnKzgWwPd@group.calendar.feishu.cn",
     "name": "红色日历",
@@ -79,6 +79,12 @@
       "summary": "部门管理-资料整理方案",
       "start": "2026-11-17T15:00:00+08:00",
       "end": "2026-11-17T15:30:00+08:00"
+    },
+    {
+      "id": "6feddae9-6579-472d-9a03-2e2cb43ac8d3_0",
+      "summary": "部门管理-林琛沟通",
+      "start": "2026-11-17T16:00:00+08:00",
+      "end": "2026-11-17T17:00:00+08:00"
     },
     {
       "id": "22fde6db-e6a5-4f96-91f6-88cc6e612edc_0",

@@ -1,6 +1,6 @@
 {
   "source": "scheduled",
-  "fetchedAt": "2026-11-17T17:09:45.346+08:00",
+  "fetchedAt": "2026-11-17T22:12:04.142+08:00",
   "calendar": {
     "id": "feishu.cn_PMFM9NPl98P0etnKzgWwPd@group.calendar.feishu.cn",
     "name": "红色日历",
@@ -82,7 +82,7 @@
     },
     {
       "id": "22fde6db-e6a5-4f96-91f6-88cc6e612edc_0",
-      "summary": "年报-初版效果对齐",
+      "summary": "年报-初版效果",
       "start": "2026-11-18T14:00:00+08:00",
       "end": "2026-11-18T14:30:00+08:00"
     },

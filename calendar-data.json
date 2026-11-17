@@ -1,6 +1,6 @@
 {
   "source": "scheduled",
-  "fetchedAt": "2026-11-17T22:12:04.142+08:00",
+  "fetchedAt": "2026-11-18T03:13:52.737+08:00",
   "calendar": {
     "id": "feishu.cn_PMFM9NPl98P0etnKzgWwPd@group.calendar.feishu.cn",
     "name": "红色日历",
@@ -90,7 +90,7 @@
       "id": "bfcaa93f-348d-4338-b9db-ab6c192996b9_0",
       "summary": "云飞会议-智能npc",
       "start": "2026-11-18T15:00:00+08:00",
-      "end": "2026-11-18T15:30:00+08:00"
+      "end": "2026-11-18T15:15:00+08:00"
     },
     {
       "id": "42d7c843-695a-4704-adff-50b2df5b1605_0",
